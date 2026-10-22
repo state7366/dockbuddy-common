@@ -53,10 +53,16 @@ def resolve_device(explicit: str = "") -> str:
 
 
 def openmm_platform():
-    """OpenMM 计算平台: 默认 CPU; DOCK_OPENMM_PLATFORM/OPENMM_DEFAULT_PLATFORM 可切 GPU。"""
+    """OpenMM 计算平台: 默认 CPU; DOCK_OPENMM_PLATFORM/OPENMM_DEFAULT_PLATFORM 可切 GPU。
+
+    OpenMM 合法平台名: CPU / Reference / CUDA / OpenCL / HIP(没有 "GPU")。
+    用户常误写 "GPU", 这里把 "GPU"/"gpu" 别名映射到 "CUDA" 兜底, 避免报
+    "There is no registered Platform called GPU"。
+    """
     import openmm as mm
     name = (os.environ.get("DOCK_OPENMM_PLATFORM")
             or os.environ.get("OPENMM_DEFAULT_PLATFORM") or "CPU")
+    name = {"GPU": "CUDA", "gpu": "CUDA"}.get(name, name)
     try:
         return mm.Platform.getPlatformByName(name)
     except Exception:  # noqa: BLE001

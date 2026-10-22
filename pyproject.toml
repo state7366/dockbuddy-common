@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dockbuddy-common"
-version = "0.1.0"
+version = "0.1.1"
 description = "DockBuddy 通用科学计算/系统工具底座(PDB/设备/日志/命令)，与 DockBuddy 解耦"
 readme = "README.md"
 requires-python = ">=3.8"
