@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dockbuddy-common"
+version = "0.1.0"
+description = "DockBuddy 通用科学计算/系统工具底座(PDB/设备/日志/命令)，与 DockBuddy 解耦"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "DockBuddy" }]
+keywords = ["protein", "torch", "openmm", "utilities", "bioinformatics"]
+dependencies = []
+
+[project.urls]
+Repository = "https://pypi.cnb.cool/vcinex/bioinfo/-/packages/simple"
+
+[tool.setuptools.packages.find]
+include = ["dockbuddy_common*"]
